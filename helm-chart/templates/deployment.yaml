@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-deployment
+  name: {{ include "helm-chart.fullname" . }}-deployment
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: nodeapp
+      app: {{ include "helm-chart.name" . }}
   template:
     metadata:
       labels:
-        app: nodeapp
+        app: {{ include "helm-chart.name" . }}
     spec:
       containers:
-        - name: nodeapp
+        - name: {{ include "helm-chart.name" . }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           command: ["node", "-e", "require('http').createServer((req, res) => res.end('Hello from Node.js!')).listen(3000)"]
           ports:
