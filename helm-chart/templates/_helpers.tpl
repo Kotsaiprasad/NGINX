@@ -1,6 +1,8 @@
 {{/*
 Generate a fullname for the chart
 */}}
-{{- define "nodeapp.fullname" -}}
+# helm-chart/templates/_helpers.tpl
+
+{{- define "helm-chart.fullname" -}}
 {{ .Release.Name }}
 {{- end -}}
