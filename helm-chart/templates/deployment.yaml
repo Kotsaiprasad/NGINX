@@ -13,8 +13,8 @@ spec:
         app: {{ include "helm-chart.name" . }}
     spec:
       containers:
-        - name: {{ include "helm-chart.name" . }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          command: ["node", "-e", "require('http').createServer((req, res) => res.end('Hello from Node.js!')).listen(3000)"]
-          ports:
-            - containerPort: 3000
+        containers:
+      - name: game-2048
+        image: alexwhen/docker-2048
+        ports:
+        - containerPort: 80
