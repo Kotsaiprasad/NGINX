@@ -8,5 +8,5 @@ spec:
     app: {{ include "helm-chart.name" . }}
   ports:
     - protocol: TCP
-      port: {{ .Values.service.port }}
-      targetPort: 3000
+      port: 80
+      targetPort: 80
